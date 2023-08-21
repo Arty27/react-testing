@@ -1,0 +1,11 @@
+arr=["SUKARNE SA DE CV", "EMPACADORA CELAYA S A DE C V", "AYVI S A DE C V", "ABASTECEDORA DE MATERIAS", "EMPACADORA CELAYA S A DE C V", "SUKARNE SA DE CV"]
+num=["1000137117", "1000137718", "1000140142", "1000187976", "1300013266", "1600133300"]
+query="INSERT INTO EOST_MYS.USERS_SOURCE_CUSTOMER_CONFIG (USER_ID, SOURCE_SYSTEM_ID, BQ_CUSTOMER_ID, BQ_CUSTOMER_NAME, IS_APPROVED, CREATED_BY, MODIFIED_BY, CREATED_DATE, MODIFIED_DATE) VALUES\n"
+
+email='(SELECT ID from USERS WHERE EMAIL="Juan.Garfias@tyson.com")'
+
+finalQuery=""
+for i in range(0,len(arr)):
+    query=query+"("+email+",1, '"+num[i]+"', '"+arr[i]+"', 0, 'Prabhat.Thakur@tyson.com', 'Prabhat.Thakur@tyson.com', (SELECT CURRENT_TIMESTAMP()), (SELECT CURRENT_TIMESTAMP())),\n"
+    
+print(query)
